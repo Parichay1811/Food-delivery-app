@@ -43,5 +43,5 @@ A fully functional **Food Delivery App** built with **React** and **modular CSS*
 
 ### 1️⃣ Clone the repository  
 ```bash
-git clone https://github.com/your-username/food-delivery-app.git
+git clone https://github.com/Parichay1811/Food-delivery-app.git
 cd food-delivery-app
