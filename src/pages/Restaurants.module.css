@@ -1,0 +1,101 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .searchContainer {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .searchInputWrapper {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+  }
+  
+  .filterButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .filterButton:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .restaurantsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .restaurantItem {
+    height: 100%;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+  }
+  
+  .noResults {
+    text-align: center;
+    padding: 3rem 0;
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 576px) {
+    .searchContainer {
+      flex-direction: column;
+    }
+  
+    .filterButton {
+      align-self: flex-start;
+    }
+  }
+  
+  

@@ -1,0 +1,228 @@
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 100px;
+  padding-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 30px;
+}
+
+/* Left section - Logo */
+.logoSection {
+  flex: 1;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff4500;
+  text-decoration: none;
+}
+img{
+  width: 100px;
+  height: 100%;
+}
+
+/* Middle section - Navigation */
+.navSection {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.mainLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.mainLinks a {
+  color: #333;
+  text-decoration: none;
+  font-size: large;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.mainLinks a:hover {
+  color: #ff4500;
+}
+
+/* Right section - Auth & Cart */
+.authSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.profileLink:hover {
+  color: #ff4500;
+}
+
+.loginBtn,
+.signupBtn,
+.logoutBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.loginBtn {
+  background-color: transparent;
+  border: 1px solid #ff4500;
+  color: #ff4500;
+  text-decoration: none;
+}
+
+.loginBtn:hover {
+  background-color: rgba(255, 69, 0, 0.1);
+}
+
+.signupBtn {
+  background-color: #ff4500;
+  border: 1px solid #ff4500;
+  color: white;
+  text-decoration: none;
+}
+
+.signupBtn:hover {
+  background-color: #e03e00;
+  border-color: #e03e00;
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.logoutBtn:hover {
+  color: #ff4500;
+}
+
+.cart {
+  position: relative;
+  color: #333;
+  transition: color 0.2s;
+  margin-left: 0.5rem;
+}
+
+.cart:hover {
+  color: #ff4500;
+}
+
+.cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4500;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileToggle {
+  display: none;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .logoSection {
+    flex: 1;
+  }
+
+  .mobileToggle {
+    display: block;
+    order: 2;
+  }
+
+  .navSection,
+  .authSection {
+    flex-basis: 100%;
+    display: none;
+  }
+
+  .navSection.active,
+  .authSection.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .mainLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .authSection.active {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+
+  .loginBtn,
+  .signupBtn,
+  .profileLink,
+  .logoutBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cart {
+    position: absolute;
+    top: 1.5rem;
+    right: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
