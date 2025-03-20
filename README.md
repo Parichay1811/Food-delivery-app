@@ -1,12 +1,47 @@
-# React + Vite
+# 🍔 Food Express (A Food Delivery App ) 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional **Food Delivery App** built with **React** and **modular CSS**, integrating various free APIs for food menus and restaurants. This app features **Firebase authentication**, live **order tracking**, secure **payment integration**, and a smooth user experience with search, filters, and a wishlist.  
 
-Currently, two official plugins are available:
+## 🌍 Live Demo  
+🚀 **[Click here to view the app](https://food-delivery-app-three-ebon.vercel.app/)**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features  
 
-## Expanding the ESLint configuration
+### ✅ User Authentication  
+- Firebase-based **login/signup** with authentication & authorization.  
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🍽️ Food & Restaurant Integration  
+- Fetches **restaurant menus** dynamically from free APIs.  
+- Displays **restaurant details**, including ratings and reviews.  
+
+### 🛒 Cart & Wishlist  
+- Add/remove food items from the **cart** before checkout.  
+- Save favorite restaurants or dishes to the **wishlist**.  
+
+### 📦 Order Management  
+- **Live order tracking** (e.g., "Preparing," "Out for Delivery").  
+- **Push notifications** for order status updates.  
+
+### 💰 Payment Integration  
+- Supports **Cash on Delivery (COD)**, **UPI**, **PayPal**, etc.  
+
+### 🔍 Search & Filters  
+- **Search** for food items or restaurants.  
+- **Filter** results by cuisine, price, ratings, etc.  
+
+### 📱 Responsive Design  
+- Fully responsive **UI/UX** using modular CSS.  
+
+## 🛠️ Tech Stack  
+- **Frontend**: React, React Router, Context API, Reducers , Redux 
+- **Styling**: Modular CSS  
+- **Backend Services**: Firebase (Authentication)  
+- **APIs**: Public food & restaurant APIs  
+- **Deployment**: Vercel  
+
+## 🚀 Getting Started  
+
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/your-username/food-delivery-app.git
+cd food-delivery-app
