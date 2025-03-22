@@ -3,7 +3,7 @@
 A fully functional **Food Delivery App** built with **React** and **modular CSS**, integrating various free APIs for food menus and restaurants. This app features **Firebase authentication**, live **order tracking**, secure **payment integration**, and a smooth user experience with search, filters, and a wishlist.  
 
 ## 🌍 Live Demo  
-🚀 **[Click here to view the app](https://food-delivery-app-three-ebon.vercel.app/)**  
+🚀 **[Click here to view the app](https://food-delivery-app-murex-eight.vercel.app/)**  
 
 ## 🚀 Features  
 
