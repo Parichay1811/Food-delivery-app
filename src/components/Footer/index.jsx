@@ -1,78 +1,74 @@
 import { Link } from "react-router-dom"
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa"
+import { FiPhone, FiMail, FiMapPin } from "react-icons/fi"
 import styles from "./Footer.module.css"
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.columns}>
-          <div className={styles.column}>
-            <h3 className={styles.title}>Food <span className={styles.ex}>Express</span></h3>
-            <p className={styles.description}>
-              Order food online from your favorite restaurants and get it delivered to your doorstep.
+        <div className={styles.grid}>
+          <div className={styles.brand}>
+            <div className={styles.logo}>
+              <span>🍜</span>
+              <span>Food<span className={styles.accent}>Express</span></span>
+            </div>
+            <p className={styles.tagline}>
+              Order delicious Indian and Chinese food from the best restaurants, delivered hot to your doorstep.
             </p>
-            <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com/parichay.duttabiswas.1811/" className={styles.socialIcon}>
-                <Facebook size={20} />
+            <div className={styles.social}>
+              <a href="https://www.facebook.com/parichay.duttabiswas.1811/" target="_blank" rel="noreferrer" className={styles.socialBtn} aria-label="Facebook">
+                <FaFacebook size={18} />
               </a>
-              <a href="https://x.com/parichay1811" className={styles.socialIcon}>
-                <Twitter size={20} />
+              <a href="https://x.com/parichay1811" target="_blank" rel="noreferrer" className={styles.socialBtn} aria-label="Twitter">
+                <FaTwitter size={18} />
               </a>
-              <a href="#" className={styles.socialIcon}>
-                <Instagram size={20} />
+              <a href="#" className={styles.socialBtn} aria-label="Instagram">
+                <FaInstagram size={18} />
               </a>
             </div>
           </div>
 
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Quick Links</h4>
-            <Link to="/" className={styles.footerLink}>
-              Home
-            </Link>
-            <Link to="/restaurants" className={styles.footerLink}>
-              Restaurants
-            </Link>
-            <Link to="/profile" className={styles.footerLink}>
-              My Account
-            </Link>
+          <div className={styles.col}>
+            <h4 className={styles.colTitle}>Quick Links</h4>
+            <Link to="/" className={styles.footerLink}>Home</Link>
+            <Link to="/restaurants" className={styles.footerLink}>Restaurants</Link>
+            <Link to="/profile" className={styles.footerLink}>My Account</Link>
+            <Link to="/checkout" className={styles.footerLink}>Cart</Link>
           </div>
 
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Help</h4>
-            <Link to="#" className={styles.footerLink}>
-              FAQ
-            </Link>
-            <Link to="#" className={styles.footerLink}>
-              Delivery Information
-            </Link>
-            <Link to="#" className={styles.footerLink}>
-              Terms & Conditions
-            </Link>
-            <Link to="#" className={styles.footerLink}>
-              Privacy Policy
-            </Link>
+          <div className={styles.col}>
+            <h4 className={styles.colTitle}>Cuisines</h4>
+            <Link to="/restaurants?cuisine=Indian" className={styles.footerLink}>Indian Food</Link>
+            <Link to="/restaurants?cuisine=Chinese" className={styles.footerLink}>Chinese Food</Link>
+            <Link to="/restaurants" className={styles.footerLink}>All Restaurants</Link>
           </div>
 
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Contact</h4>
+          <div className={styles.col}>
+            <h4 className={styles.colTitle}>Contact</h4>
             <div className={styles.contactItem}>
-              <Phone size={16} className={styles.contactIcon} />
-              <span>123 1234 12345</span>
+              <FiPhone size={14} />
+              <span>+91 123 456 7890</span>
             </div>
             <div className={styles.contactItem}>
-              <Mail size={16} className={styles.contactIcon} />
-              <span>support@foodexpress.com</span>
+              <FiMail size={14} />
+              <span>support@foodexpress.in</span>
             </div>
             <div className={styles.contactItem}>
-              <MapPin size={16} className={styles.contactIcon} />
-              <span>123 Food Street, City, Country</span>
+              <FiMapPin size={14} />
+              <span>Mumbai, India</span>
             </div>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <p className={styles.copyright}>&copy; {new Date().getFullYear()} FoodExpress. All rights reserved.</p>
+          <p className={styles.copyright}>
+            &copy; {new Date().getFullYear()} FoodExpress. All rights reserved.
+          </p>
+          <div className={styles.bottomLinks}>
+            <a href="#" className={styles.bottomLink}>Privacy Policy</a>
+            <a href="#" className={styles.bottomLink}>Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -80,4 +76,3 @@ const Footer = () => {
 }
 
 export default Footer
-

@@ -1,11 +1,9 @@
-"use client"
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { AuthProvider } from "./context/AuthContext"
 import { CartProvider } from "./context/CartContext"
+import { ThemeProvider } from "./context/ThemeContext"
 import { useAuth } from "./context/AuthContext"
 
-// Pages
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
@@ -15,7 +13,6 @@ import Checkout from "./pages/Checkout"
 import Profile from "./pages/Profile"
 import NotFound from "./pages/NotFound"
 
-// Components
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import ProtectedRoute from "./components/ProtectedRoute"
@@ -53,21 +50,22 @@ function AppRoutes() {
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <Router>
-          <div className="app">
-            <Navbar />
-            <main className="content">
-              <AppRoutes />
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </CartProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Router>
+            <div className="app">
+              <Navbar />
+              <main className="content">
+                <AppRoutes />
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </CartProvider>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
 export default App
-

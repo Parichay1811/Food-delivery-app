@@ -1,18 +1,25 @@
 .stars {
   display: inline-flex;
-  gap: 0.25rem;
+  gap: 4px;
 }
 
 .star {
   cursor: pointer;
-  transition: transform 0.1s, color 0.2s;
+  transition: transform 0.1s ease, color 0.15s ease;
 }
 
 .star:not(.readOnly):hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+}
+
+.filled {
+  color: #F59E0B;
+}
+
+.empty {
+  color: var(--border-color);
 }
 
 .readOnly {
   cursor: default;
 }
-

@@ -1,46 +1,114 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: calc(100vh - 200px);
-    padding: 2rem;
+.page {
+  min-height: 100vh;
+  padding-top: 68px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.emoji {
+  font-size: 80px;
+  margin-bottom: 8px;
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -4px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background: var(--gradient-primary);
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+  margin-top: 8px;
+}
+
+.homeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+}
+
+/* ── 640px – large mobile ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .content {
+    padding: 32px 16px;
   }
-  
+
+  .emoji {
+    font-size: 60px;
+  }
+
+  .code {
+    font-size: 72px;
+    letter-spacing: -2px;
+  }
+
   .title {
-    font-size: 6rem;
-    font-weight: 700;
-    color: #ff4500;
-    margin: 0;
+    font-size: 22px;
   }
-  
-  .subtitle {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0 0 1.5rem;
+
+  .desc {
+    font-size: 14px;
   }
-  
-  .message {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 500px;
-    margin-bottom: 2rem;
+
+  .homeBtn {
+    padding: 12px 24px;
+    font-size: 14px;
   }
-  
-  .homeButton {
-    background-color: #ff4500;
-    color: white;
-    text-decoration: none;
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.2s;
+}
+
+/* ── 480px – small mobile ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .emoji {
+    font-size: 52px;
   }
-  
-  .homeButton:hover {
-    background-color: #e03e00;
+
+  .code {
+    font-size: 56px;
+    letter-spacing: -1px;
   }
-  
-  
+
+  .title {
+    font-size: 20px;
+  }
+}

@@ -1,212 +1,596 @@
-.container {
-    display: flex;
-    flex-direction: column;
+.page {
+  min-height: 100vh;
+  padding-top: 68px;
+  background: var(--bg-primary);
+}
+
+/* Loading */
+.loadingPage {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-secondary);
+  padding-top: 68px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Not Found */
+.notFound {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 40px 24px;
+  padding-top: calc(68px + 40px);
+}
+
+.notFoundEmoji {
+  font-size: 72px;
+  margin-bottom: 8px;
+}
+
+.notFound h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.notFound p {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+}
+
+/* Banner */
+.banner {
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.2) 100%);
+}
+
+.bannerContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: var(--transition);
+  align-self: flex-start;
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.restaurantInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cuisinePill {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.restaurantName {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.restaurantDesc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 560px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.metaBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.metaDivider {
+  color: rgba(255,255,255,0.4);
+}
+
+.tagRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.7);
+}
+
+.tag {
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Category Nav */
+.categoryNav {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 68px;
+  z-index: 100;
+}
+
+.categoryContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.categoryContainer::-webkit-scrollbar { display: none; }
+
+.catBtn {
+  padding: 16px 20px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.catBtn:hover {
+  color: var(--color-primary);
+}
+
+.catBtnActive {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Main Grid */
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  padding: 32px 0 64px;
+  align-items: start;
+}
+
+/* Menu Section */
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemCount {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.menuGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menuSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonCard {
+  height: 120px;
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-lg);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.noItems {
+  padding: 48px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+/* Reviews Section */
+.reviewsSection {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.reviewForm {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reviewFormTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ratingLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.textarea {
+  width: 100%;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--card-bg);
+  resize: vertical;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.submitBtn {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submitBtn:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Review list */
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reviewCard {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewerAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reviewerName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.reviewDate {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.reviewText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── 1024px – tablet landscape ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
   }
-  
-  .banner {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+
+  .reviewsSection {
+    position: static;
+    max-height: none;
   }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
-    display: flex;
-    align-items: flex-end;
-    padding: 2rem;
-  }
-  
-  .restaurantInfo {
-    color: white;
-  }
-  
-  .name {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-  
-  .details {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .rating,
-  .detail {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-  }
-  
-  .rating {
-    color: #ffa000;
-  }
-  
+}
+
+/* ── 768px – tablet portrait ────────────────────────────────── */
+@media (max-width: 768px) {
   .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    width: 100%;
+    padding: 0 20px;
   }
-  
-  .categoryNav {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
+
+  .mainGrid {
+    gap: 24px;
+    padding: 24px 0 48px;
   }
-  
-  .categoryButton {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 50px;
-    background-color: #f2f2f2;
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.2s;
+
+  .banner {
+    height: 320px;
   }
-  
-  .categoryButton.active {
-    background-color: #ff4500;
-    color: white;
+
+  .catBtn {
+    padding: 14px 16px;
+    font-size: 13px;
   }
-  
-  .sectionTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+
+  .categoryContainer {
+    padding: 0 20px;
   }
-  
-  .menuItems {
-    margin-bottom: 3rem;
+}
+
+/* ── 640px – large mobile ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .content {
+    padding: 0 16px;
   }
-  
-  .menuItemsGrid {
-    display: grid;
-    gap: 1rem;
+
+  .mainGrid {
+    gap: 20px;
+    padding: 20px 0 40px;
   }
-  
-  .reviewsContainer {
-    margin-top: 2rem;
+
+  .banner {
+    height: 260px;
   }
-  
+
+  .bannerContent {
+    padding: 16px;
+  }
+
+  .restaurantInfo {
+    gap: 8px;
+  }
+
+  .metaRow {
+    gap: 6px;
+  }
+
+  .metaBadge,
+  .metaItem {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
   .reviewForm {
-    background-color: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+    padding: 16px;
   }
-  
-  .reviewFormTitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+
+  .reviewsSection {
+    padding: 20px;
   }
-  
-  .ratingSelector {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+
+  .sectionTitle {
+    font-size: 18px;
   }
-  
-  .reviewTextarea {
-    width: 100%;
-    height: 120px;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    resize: vertical;
-    font-family: inherit;
+
+  .categoryContainer {
+    padding: 0 16px;
   }
-  
-  .submitButton {
-    background-color: #ff4500;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
+
+  .catBtn {
+    padding: 13px 14px;
+    font-size: 13px;
   }
-  
-  .submitButton:hover {
-    background-color: #e03e00;
+}
+
+/* ── 480px – small mobile ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .content {
+    padding: 0 14px;
   }
-  
-  .reviewsList {
-    display: grid;
-    gap: 1.5rem;
+
+  .banner {
+    height: 220px;
   }
-  
-  .reviewItem {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1.5rem;
+
+  .bannerContent {
+    padding: 12px;
   }
-  
-  .reviewHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+
+  .backButton {
+    padding: 8px 14px;
+    font-size: 13px;
   }
-  
-  .reviewUser {
-    font-weight: 600;
+
+  .restaurantName {
+    font-size: clamp(22px, 5vw, 32px);
   }
-  
-  .reviewDate {
-    color: #777;
-    font-size: 0.9rem;
+
+  .tagRow {
+    display: none;
   }
-  
-  .reviewRating {
-    margin-bottom: 0.75rem;
+
+  .reviewsSection {
+    padding: 16px;
+    gap: 16px;
   }
-  
-  .reviewText {
-    color: #444;
-    line-height: 1.5;
+
+  .noItems {
+    padding: 32px 16px;
   }
-  
-  .loading {
-    text-align: center;
-    padding: 2rem;
-    color: #666;
+}
+
+/* ── 360px – very small phone ────────────────────────────────── */
+@media (max-width: 360px) {
+  .content {
+    padding: 0 12px;
   }
-  
-  .noResults {
-    text-align: center;
-    padding: 2rem;
-    color: #666;
+
+  .banner {
+    height: 200px;
   }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .banner {
-      height: 200px;
-    }
-  
-    .name {
-      font-size: 1.75rem;
-    }
-  
-    .details {
-      gap: 1rem;
-    }
-  }
-  
-  
+}

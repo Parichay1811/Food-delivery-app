@@ -1,51 +1,88 @@
-"use client"
-
 import { useState, useEffect } from "react"
 
-export const useMenuItems = (restaurantId) => {
+const SPOONACULAR_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY
+
+const FALLBACK_ITEMS = {
+  Indian: [
+    { id: "ind-1", name: "Chicken Tikka Masala", price: 320, popular: true, isVeg: false },
+    { id: "ind-2", name: "Lamb Biryani", price: 360, popular: true, isVeg: false },
+    { id: "ind-3", name: "Dal Makhani", price: 220, popular: true, isVeg: true },
+    { id: "ind-4", name: "Butter Chicken", price: 340, popular: true, isVeg: false },
+    { id: "ind-5", name: "Palak Paneer", price: 260, popular: true, isVeg: true },
+    { id: "ind-6", name: "Masala Dosa", price: 160, popular: false, isVeg: true },
+    { id: "ind-7", name: "Chole Bhature", price: 200, popular: false, isVeg: true },
+    { id: "ind-8", name: "Aloo Gobi", price: 180, popular: false, isVeg: true },
+    { id: "ind-9", name: "Paneer Tikka", price: 300, popular: false, isVeg: true },
+    { id: "ind-10", name: "Lamb Rogan Josh", price: 380, popular: false, isVeg: false },
+    { id: "ind-11", name: "Chicken Korma", price: 350, popular: false, isVeg: false },
+    { id: "ind-12", name: "Samosa", price: 120, popular: false, isVeg: true },
+  ].map((item) => ({
+    ...item,
+    image: "",
+    description: "Freshly prepared Indian dish made with authentic spices and ingredients.",
+  })),
+}
+
+const priceCache = {}
+const getPrice = (id) => {
+  if (!priceCache[id]) {
+    priceCache[id] = parseFloat((Math.random() * 280 + 120).toFixed(0))
+  }
+  return priceCache[id]
+}
+
+export const useMenuItems = (area) => {
   const [menuItems, setMenuItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    if (!area) return
+
     const fetchMenuItems = async () => {
+      if (!SPOONACULAR_KEY) {
+        setMenuItems(FALLBACK_ITEMS[area] || [])
+        setLoading(false)
+        return
+      }
+
       try {
         setLoading(true)
 
-        // Using the MealDB API based on category/restaurant ID
-        const response = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${encodeURIComponent(restaurantId)}`,
-        )
+        const cuisine = area.toLowerCase()
+        const url = `https://api.spoonacular.com/recipes/complexSearch?cuisine=${cuisine}&number=20&apiKey=${SPOONACULAR_KEY}`
+        const response = await fetch(url)
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch menu items")
-        }
+        if (!response.ok) throw new Error("Failed to fetch menu items")
 
         const data = await response.json()
+        const results = data.results || []
 
-        // Transform to menu item format with prices
-        const menuItemsData = data.meals.map((meal) => ({
-          id: meal.idMeal,
-          name: meal.strMeal,
-          image: meal.strMealThumb,
-          price: (Math.random() * 15 + 5).toFixed(2), // Random price between $5-$20
-          description: "Delicious meal prepared with fresh ingredients",
-          popular: Math.random() > 0.7, // 30% chance of being popular
+        const items = results.map((recipe, idx) => ({
+          id: String(recipe.id),
+          name: recipe.title,
+          image: recipe.image || "",
+          price: getPrice(String(recipe.id)),
+          description: `Freshly prepared ${area} dish made with authentic spices and ingredients.`,
+          popular: idx < 5,
+          isVeg: false,
         }))
 
-        setMenuItems(menuItemsData)
+        if (items.length === 0 && FALLBACK_ITEMS[area]) {
+          setMenuItems(FALLBACK_ITEMS[area])
+        } else {
+          setMenuItems(items)
+        }
       } catch (err) {
         setError(err.message)
+        setMenuItems(FALLBACK_ITEMS[area] || [])
       } finally {
         setLoading(false)
       }
     }
 
-    if (restaurantId) {
-      fetchMenuItems()
-    }
-  }, [restaurantId])
+    fetchMenuItems()
+  }, [area])
 
   return { menuItems, loading, error }
 }
-
