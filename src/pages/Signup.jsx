@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { auth, googleProvider } from "../firebase/config"
-import { FaGoogle } from "react-icons/fa"
+import { FcGoogle } from "react-icons/fc"
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi"
 import styles from "./Auth.module.css"
 
@@ -88,7 +88,7 @@ const Signup = () => {
         <div className={styles.divider}><span>or continue with</span></div>
 
         <button className={styles.googleBtn} onClick={handleGoogle} disabled={loading}>
-          <FaGoogle size={18} />
+          <FcGoogle size={18} />
           Sign up with Google
         </button>
 
